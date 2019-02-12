@@ -31,7 +31,49 @@
   }
 } */
 
-.bg-dark{
-  background-color: #00a8e8;
+.simpleBakground{
+  background-color:#00a8e8;
+}
+.logo-main{
+  font-family: "Roboto Slab";
+    font-weight: 700;
+    font-style: normal;
+    
+}
+.navbar{
+  padding: 0rem 
+}
 
+
+.form-group {
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
+
+}
+.fa-3{
+  font-size: 1.2em;
+  display: inline;
+  position: absolute;
+  float: right;
+  padding-left: 209px;
+  color: rgba(0,52,89,0.2);
+}
+
+.header-spacing{
+  border: 1px solid red;
+  margin-right:50px;
+  
+}
+.h-bg{
+  background-color: blueviolet;
+}
+
+
+@media (min-width: 576px){
+  .searchbar{
+    width: 0ex;
+    padding: 0rem
+  }
+
+  
 }
