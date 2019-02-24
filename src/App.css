@@ -1,3 +1,12 @@
+
+.modal-dialog {
+  max-width: 800px;
+}
+.modal-content {
+ border:none; 
+ border-radius:  0 !important;
+
+}
 /* .App {
   text-align: center;
 }
@@ -40,6 +49,16 @@
     font-style: normal;
     
 }
+.border-bottom {
+  border-bottom:1px solid #ccc;
+  box-shadow: 1px 0px 2px #ccc;
+}
+.text-right ul {
+  float: right;
+}
+.text-right li.nav-item {
+  padding: 20px;
+}
 .navbar{
   padding: 0rem 
 }
@@ -68,12 +87,89 @@
   background-color: blueviolet;
 }
 
+.modal-title {
+  left: 0;
+    position: absolute ;
+    right: 0;
+    text-align: center !important;
+}
+.multi-steps {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.multi-steps > li {
+  counter-increment: stepNum;
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  color: #007ea7;
+}
+.multi-steps > li:before {
+  content: '\f00c';
+  content: '\2713;';
+  content: '\10003';
+  content: '\10004';
+  content: '\2713';
+  display: block;
+  margin: 0 auto 4px;
+  background-color: #fff;
+  width: 36px;
+  height: 36px;
+  line-height: 32px;
+  text-align: center;
+  font-weight: bold;
+  border-width: 2px;
+  border-style: solid;
+  border-color:  #007ea7;
+  border-radius: 50%;
+}
+.multi-steps > li:after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  background-color: #007ea7;
+  position: absolute;
+  top: 16px;
+  left: 57%;
+  z-index: 0;
+}
+.multi-steps > li:last-child:after {
+  display: none;
+}
+.multi-steps > li.is-active:before {
+  background-color: #fff;
+  border-color:  #007ea7;
+}
+.multi-steps > li.is-active ~ li {
+  color: #808080;
+}
+.multi-steps > li.is-active ~ li:before {
+  background-color: #ededed;
+  border-color: #ededed;
+}
 
-@media (min-width: 576px){
-  .searchbar{
-    width: 0ex;
-    padding: 0rem
-  }
-
-  
+/* Contact Us Style */
+.img {
+width: 100%;
+}
+section {
+  padding-bottom: 60px;
+}
+.address .fa {
+  margin-right: 5px;
+}
+/* Footer Style */
+.footer {
+  border-top:1px solid #ccc;
+  box-shadow: 0px 0px 4px #ccc;
+  position: fixed;
+  bottom:0;
+  width:100%;
+  background: #fff;
+  z-index: 99;
+}
+.footer p {
+  padding:15px;
+  margin:0;
 }
