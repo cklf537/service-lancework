@@ -156,8 +156,21 @@ width: 100%;
 section {
   padding-bottom: 60px;
 }
+.address  {
+  padding:10px 0;
+  box-sizing: border-box;
+}
 .address .fa {
   margin-right: 5px;
+}
+.ContactForm {
+  padding-top:35px;
+  box-sizing: border-box;
+}
+.ContactForm button{
+  margin:10px 0;
+  box-sizing: border-box;
+  float: right;
 }
 /* Footer Style */
 .footer {

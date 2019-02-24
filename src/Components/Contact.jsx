@@ -29,15 +29,45 @@ class Contact extends React.Component {
                   </div>
                   </div>
                   
-                     <div className="col-md-12">
+                     <div className="col-md-12 ContactForm">
+                     
+                     <form action="">
                      <div className="row">
-                           <div className="col-md-6 text-center">
-                              <span><i className="fa fa-phone" aria-hidden="true"></i> +91 99999 99999</span>
+                           <div className="col-md-6 ">
+                              <div className="form-group">
+                                 <label htmlFor="name">First Name:</label>
+                                 <input type="text" className="form-control" id="name"/>
+                              </div>
+                              <div className="form-group">
+                                 <label htmlFor="email">Email Address:</label>
+                                 <input type="email" className="form-control" id="email"/>
+                              </div>
                            </div>
-                           <div className="col-md-6 text-center">
-                        <span> <i className="fa fa-envelope" aria-hidden="true"></i> support@csb.com</span>
+                           <div className="col-md-6 ">
+                           <div className="form-group">
+                                 <label htmlFor="lastname">Last Name:</label>
+                                 <input type="text" className="form-control" id="lastname"/>
+                              </div>
+                           <div className="form-group">
+                                 <label htmlFor="mobile">Mobile:</label>
+                                 <input type="text" className="form-control" id="mobile"/>
+                              </div>
+                              
                            </div>
+                           <div className="col-md-12">
+                              <div className="form-group">
+                              <label htmlFor="exampleFormControlTextarea1">Message</label>
+                              <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                           </div>
+                           </div>
+                           <div className="col-md-12">
+                           <div className="form-group pull-right">
+                              <button className="form-control btn btn-primary" type="button">Submit</button>
+                           </div>
+                           </div>
+                                                      
                      </div>
+                     </form>
                </div>
             </div>
           </div>
