@@ -1,2 +1,2 @@
 # Service-iPrepQ
-Personal Tutoring
+REST API services for iPrepQ
