@@ -1,5 +1,6 @@
 const express = require('express');
 const questionsController = require('./controller/questions.controller');
+const cors = require('cors');
 
 //Dotenv config
 require('dotenv').config();
@@ -8,6 +9,7 @@ const App = express();
 
 //MiddleWare
 App.use(express.json());
+App.use(cors());
 
 //Routes
 App.use('/api',questionsController);
