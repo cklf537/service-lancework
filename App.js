@@ -1,6 +1,7 @@
 const express = require('express');
 const questionsController = require('./controller/questions.controller');
 const cors = require('cors');
+const errorHandlerMW = require('./middleWare/errorHandlerMilldeWare');
 
 //Dotenv config
 require('dotenv').config();
@@ -13,6 +14,7 @@ App.use(cors());
 
 //Routes
 App.use('/api',questionsController);
+App.use(errorHandlerMW);
 
 
 App.listen(process.env.PORT, ()=>{
