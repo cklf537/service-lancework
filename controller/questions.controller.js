@@ -7,14 +7,18 @@ const pool = require('../db.js');
 router.get('/questions', async (req, res, next)=>{
     try {
         const users = await pool.query("SELECT * FROM iprepq_users")
+        if(users.rows.length === 0){
+            throw new Error("No user found")
+        }
         res.json(users.rows);
     } catch (error) {
         return next(error);
     }
 })
 
+
 //POsT
-router.post('/questions', async (req, res, next)=>{
+router.post('/question', async (req, res, next)=>{
     const getUser = ()=> undefined;
     try {
         const user = getUser();
