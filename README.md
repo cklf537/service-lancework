@@ -1,2 +1,1 @@
-# Service-iPrepQ
-Personal Tutoring
+# Lance-Work GraphQL API
