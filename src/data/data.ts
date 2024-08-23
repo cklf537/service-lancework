@@ -12,13 +12,13 @@ export const data = {
     users: [
         {
             user_name: "Developer 1",
-            user_id: "Dev01",
-            user_group_id: "gp02"
+            user_id: "01",
+            group_id: "01"
         },
         {
             user_name: "Admin",
-            user_id: "Admin",
-            user_group_id: "gp01"
+            user_id: "02",
+            group_id: "02"
         }
     ],
     heading: [

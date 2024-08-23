@@ -11,6 +11,14 @@ export const resolvers = {
       category: (parent: any, args: any, Context: any)=>{
         db_connection
         return data.categorys.find(category=> category.categor_id === args.categor_id);
+      },
+      user: (parent: any, args: any, Context: any) =>{
+        return data.users.find(user=>user.user_id === args.user_id);
       }
     },
+    Users:{
+      group: (parent: {group_id: string})=>{
+        return data.groups.filter(group=>group.group_id === parent.group_id);
+      }
+    }
   };

@@ -1,3 +1,4 @@
+
 export const typeDefs = `#graphql
   
   type Heading{
@@ -15,6 +16,7 @@ export const typeDefs = `#graphql
   type Users{
     user_id: ID!
     user_name: String!
+    group: [Groups]!
   }
 
   type Categorys {
@@ -28,14 +30,6 @@ export const typeDefs = `#graphql
     groups: [Groups]
     categorys: [Categorys]
     category(categor_id: ID!): Categorys
+    user(user_id: ID!): Users
   }
-
-  # type Book {
-  #   title: String
-  #   author: String
-  # }
-
-  # type Query {
-  #   books: [Book]
-  # }
 `;
