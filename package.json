@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "compile": "tsc",
-    "start": "npm run compile && nodemon",
-    "start-back": "npm run compile && nodemon ./dist/index.js",
-    "build-pro": "npm run compile && ts-node --esm ./dist/index.js"
+    "start": " npm run compile && nodemon ./dist/index.js",
+    "start-back": "npm run compile && node --inspect ./dist/index.js",
+    "build-pro": "npm run compile && ts-node --esm ./dist/index.js",
+    "run-server":"node --inspect ./dist/index.js"
   },
   "keywords": [],
   "author": "",
