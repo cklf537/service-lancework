@@ -6,7 +6,7 @@ import { db_connection } from '../src/data/connections.js'
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers,
+    resolvers,    
   });
 
   const { url } = await startStandaloneServer(server, {

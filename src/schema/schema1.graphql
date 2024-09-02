@@ -1,11 +1,4 @@
-
-interface IGroup{
-  group_name: String
-}
-
-export const typeDefs = `#graphql
-  
-  type Heading{
+type Heading{
     id: ID!
     title: String!
     link: String
@@ -36,14 +29,6 @@ export const typeDefs = `#graphql
     category(categor_id: ID!): Categorys
     user(user_id: ID!): Users
   }
-
   type Mutation {
      createUser(user_id: ID!, user_name: String): Users
-     insertUser(user_name: String, group: NGroup): Users
   }
-
-  input NGroup {
-    group_name: String!
-  }
-
-`;
