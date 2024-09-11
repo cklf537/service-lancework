@@ -2,11 +2,13 @@ export const data = {
     groups: [
         {
             group_name: "Admin",
-            group_id: "01"
+            group_id: "01",
+            user_id: "01"
         },
         {
             group_name: "Developer",
-            group_id: "02"
+            group_id: "02",
+            user_id: "02"
         }
     ],
     users: [

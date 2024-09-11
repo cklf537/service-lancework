@@ -12,9 +12,14 @@ export const typeDefs = `#graphql
     alt: String
   }
 
+  type Database {
+    name: String!
+  }
+
   type Groups{
     group_id: ID!
     group_name: String!
+    users: [Users]
   }
 
   type Users{
@@ -35,6 +40,8 @@ export const typeDefs = `#graphql
     categorys: [Categorys]
     category(categor_id: ID!): Categorys
     user(user_id: ID!): Users
+    database: [Database]!
+    group(group_id: ID!): Groups
   }
 
   type Mutation {
