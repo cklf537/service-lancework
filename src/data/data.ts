@@ -3,12 +3,12 @@ export const data = {
         {
             group_name: "Admin",
             group_id: "01",
-            user_id: "01"
+            user_id:["01","02"]
         },
         {
             group_name: "Developer",
             group_id: "02",
-            user_id: "02"
+            user_id:["02"]
         }
     ],
     users: [

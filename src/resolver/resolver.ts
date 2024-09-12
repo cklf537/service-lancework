@@ -3,7 +3,7 @@ import { data } from "../data/data.js";
 import { db_connection } from '../data/connections.js';
 
 
-export interface USER{
+export interface USER {
   user_id: string
   user_name?: string
   group?: {
@@ -12,29 +12,39 @@ export interface USER{
   }
 }
 
+export interface ITEMVALUE{
+  user_id?: string;
+  user_name?: string;
+  
+}
+
+// export interface USERITEM<ITEMVALUE> {
+//   id: string
+//   key: string
+//   value: [ITEMVALUE]
+// }
+
 export interface DATABASE {
   name?: string
 }
+
+
 
 export const resolvers = {
     Query: {
       heading: ()=>data.heading,
       // users: ()=> data.users,
       users: async ()=> {
-        const dbName = db_connection.db.list((erro, body)=>{
-          return body.filter(db=>db==='users');
-        });
-        // const users = db_connection.db.use("users");
-        // let totalUsers: any = [];
-        // await users.list().then(body=>{
-        //   body.rows.forEach(doc=>{
-        //     // totalUsers.push(doc.value);
-        //     console.log(doc);
-        //     totalUsers.push(emit(,doc))
-        //   })
-        // });
-        // return totalUsers;
-        // await users.get("user_name");
+        let users: USER[] = []; 
+        const userDB = await db_connection.db.use("users");
+        var items = await userDB.view("getusers","users");
+        items.rows.forEach((item )=>{
+          let curItem = item.value as USER;
+          if(curItem.user_id !== undefined){
+            users.push(item.value as USER);
+          }
+        })
+        return users;
       },
       groups: ()=> data.groups,
       group: (parent: any, args: any, Context:any)=> {
@@ -59,27 +69,32 @@ export const resolvers = {
     },
     Users:{
       group: async (parent: {group_id: string})=>{
-        const userDb = (await db_connection.db.list()).filter((db, i)=>db.toString() == 'users');
-        console.log(userDb)
-        // const users = db_connection.db.use("users");
-        // return await users.list().then(body=>{
-        //   body.rows.forEach(doc=>{
-        //     return doc;
-        //   })
-        // });
         return data.groups.filter(group=>group.group_id === parent.group_id);
       }
     },
+    Groups:{
+      users: (parent: {user_id: string})=>{
+        return data.users.filter;
+      }
+    },
     Mutation:{
-      createUser: (parent: any, args: any, Context: any)=>{
-        db_connection.db.create("users", {n:3});
-        return db_connection.db.get("users").then(respons=>{
-          return respons;
-        })
+      createUser: async (parent: any, args: any, Context: any)=>{
+        const udb = (await db_connection.db.list()).filter(db=>db==='users');
+        if(!udb){
+          await db_connection.db.create("users", {n:3});
+        }else{
+          const userDb = await db_connection.db.use("users");
+          userDb.insert(args);
+          console.log("ok");
+          return;
+        }
+        // return db_connection.db.get("users").then(respons=>{
+        //   return respons;
+        // })
       },
-      insertUser: async (parent: any, args: any, Context: any)=>{
+      insertUser: async (parent: any, args: USER, Context: any)=>{
         const users =  await db_connection.db.use("users");
-        users.insert(args);
+        // users.insert(args);
         return await users.list();
         // return await users.list().then(body=>{
         //   body.rows.forEach(doc=>doc)
