@@ -8,7 +8,7 @@
     "start": " npm run compile && nodemon ./dist/index.js",
     "start-back": "npm run compile && node --inspect ./dist/index.js",
     "build-pro": "npm run compile && ts-node --esm ./dist/index.js",
-    "run-server":"node --inspect ./dist/index.js"
+    "run-server": "node --inspect ./dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +20,8 @@
     "graphql": "^16.9.0",
     "nano": "^10.1.4",
     "nodemon": "^3.1.4",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.4.1",
