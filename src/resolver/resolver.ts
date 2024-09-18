@@ -1,16 +1,19 @@
 
 import { data } from "../data/data.js";
 import { db_connection } from '../data/connections.js';
+import { getGroups, getUsers } from "../services/user-service.js";
+import { GROUP, USER } from "../model/models.js";
+import { ApplicationDatSource } from "../context.ts/lanceworkcontext.js";
+import { AppContext } from "../index.js";
 
-
-export interface USER {
-  user_id: string
-  user_name?: string
-  group?: {
-    group_id?: string
-    group_name?: string
-  }
-}
+// export interface USER {
+//   user_id: string
+//   user_name?: string
+//   group?: {
+//     group_id?: string
+//     group_name?: string
+//   }
+// }
 
 export interface ITEMVALUE{
   user_id?: string;
@@ -33,18 +36,8 @@ export interface DATABASE {
 export const resolvers = {
     Query: {
       heading: ()=>data.heading,
-      // users: ()=> data.users,
-      users: async ()=> {
-        let users: USER[] = []; 
-        const userDB = await db_connection.db.use("users");
-        var items = await userDB.view("getusers","users");
-        items.rows.forEach((item )=>{
-          let curItem = item.value as USER;
-          if(curItem.user_id !== undefined){
-            users.push(item.value as USER);
-          }
-        })
-        return users;
+      users: (parent: any, args: any, {db}: AppContext)=>{
+        getUsers()
       },
       groups: ()=> data.groups,
       group: (parent: any, args: any, Context:any)=> {
@@ -68,9 +61,10 @@ export const resolvers = {
       }
     },
     Users:{
-      group: async (parent: {group_id: string})=>{
-        return data.groups.filter(group=>group.group_id === parent.group_id);
-      }
+      // group: async (parent: {group_id: string})=>{
+      //   return data.groups.filter(group=>group.group_id === parent.group_id);
+      // }
+      group: getGroups
     },
     Groups:{
       users: (parent: {user_id: string})=>{
@@ -92,7 +86,7 @@ export const resolvers = {
         //   return respons;
         // })
       },
-      insertUser: async (parent: any, args: USER, Context: any)=>{
+      insertUser: async (parent: any, args: USER<GROUP>, Context: any)=>{
         const users =  await db_connection.db.use("users");
         // users.insert(args);
         return await users.list();
