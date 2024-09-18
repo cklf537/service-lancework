@@ -5,6 +5,7 @@ import { getGroups, getUsers } from "../services/user-service.js";
 import { GROUP, USER } from "../model/models.js";
 import { ApplicationDatSource } from "../context.ts/lanceworkcontext.js";
 import { AppContext } from "../index.js";
+import { UserService } from "../services/userservice.js";
 
 // export interface USER {
 //   user_id: string
@@ -31,13 +32,15 @@ export interface DATABASE {
   name?: string
 }
 
-
-
 export const resolvers = {
     Query: {
       heading: ()=>data.heading,
       users: (parent: any, args: any, {db}: AppContext)=>{
-        getUsers()
+        const users = new UserService({
+          designname: "getusers",
+          viewname: "users"
+        },"users");
+        users.getUsers();
       },
       groups: ()=> data.groups,
       group: (parent: any, args: any, Context:any)=> {

@@ -5,32 +5,23 @@ import url from 'url';
 
 
 export class ApplicationDatabase {
-    #fileName: string;
-    #filePath: string;
-    #dbConnection!: Nano.ServerScope;
-    #dbName!: string;
-    
-    constructor(){
-        this.#fileName = url.fileURLToPath(import.meta.url);
-        this.#filePath = path.dirname(this.#fileName);
+
+    #dbConnection!: any;
+    #applicationEnvironmentFilePath: string = "";
+
+    constructor(enviromentFilePath: string){
+        this.#dbConnection = this.initializeDbConnection();
+        this.#applicationEnvironmentFilePath = enviromentFilePath;
     }
 
-    async initializeConnection(){
-        dotenv.config({path: path.join(this.#filePath, this.#fileName)})
+    async initializeDbConnection(){
+        dotenv.config({path: path.join(this.#applicationEnvironmentFilePath, '.env')});
         try {
-            this.#dbConnection = Nano(process.env.DB_CONNECTION || ""); 
+            const db = Nano(process.env.DB_CONNECTION || "");
+            console.log("Connection Successfull!!!");
+            return db;
         } catch (error) {
             throw error;
         }
     }
-
-    public setDB(dbname: string){
-        this.#dbName = dbname;
-    }
-
-    public getDB(){
-        this.initializeConnection()
-        this.#dbConnection.db.use(this.#dbName);
-    }
-
 }

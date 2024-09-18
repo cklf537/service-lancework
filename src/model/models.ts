@@ -15,5 +15,11 @@ interface USER<GROUP> {
     group?: GROUP
 }
 
+interface VIEW {
+    designname: string;
+    viewname: string;
+}
 
-export {USER, GROUP};
+
+
+export {USER, GROUP, VIEW};
